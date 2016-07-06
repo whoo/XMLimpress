@@ -36,6 +36,8 @@
 		</div>
 		<div id="impress"> 
 			<xsl:apply-templates select="step"/>
+
+<div id="overview" class="step present active" data-x="0" data-y="0" data-scale="10" style="position: absolute; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(10); transform-style: preserve-3d;"> </div>
 		</div>
 	</body>
 	</html>
@@ -51,7 +53,9 @@
 	<xsl:variable name="data-y" select="floor((position() - 1) div $loop) * $y-inc" />
 	<xsl:variable name="data-rotate" select="(position() - 1) * $rotate-inc - floor(position() div $loop) * $rotate-inc" />
 
-	<div class="step" data-x="{$data-x}" data-y="{$data-y}" data-rotate="{$data-rotate}"> 
+	<xsl:variable name="rid" ><xsl:value-of select="./@id" /></xsl:variable>
+
+	<div class="step slide {$rid}" data-x="{$data-x}" data-y="{$data-y}" data-rotate="{$data-rotate}"> 
 		<xsl:copy-of select="."/>
 	</div>
 </xsl:template>
