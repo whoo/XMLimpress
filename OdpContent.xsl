@@ -6,6 +6,7 @@
 		xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
 		xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
 		xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0"
+		xmlns:svg="urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"
 		xmlns:xlink="http://www.w3.org/1999/xlink"
 		 exclude-result-prefixes="text">
 
@@ -51,9 +52,16 @@
 
 <xsl:template match="draw:frame">
 	<xsl:variable name="fstyle" select="./@draw:style-name"/>
+<xsl:variable name="width" select="./@svg:width" />
+<xsl:variable name="height" select="./@svg:height" />
+
 <!-- div style="{$fstyle}" -->
-<div class="{$fstyle}">
-	<xsl:apply-templates select="draw:image"/>
+<div class="{$fstyle} ">
+<xsl:apply-templates select="draw:image">
+	<xsl:with-param name="width" select="$width"/>
+	<xsl:with-param name="height" select="$height"/>
+</xsl:apply-templates>
+
 
 <xsl:apply-templates select="*/text:p"/>
 <xsl:apply-templates select="*/text:list"/>
@@ -81,8 +89,11 @@
 </xsl:template>
 
 <xsl:template match="draw:image">
+<xsl:param name="width" />
+<xsl:param name="height" />
 <xsl:variable name="img" select="./@xlink:href" />
-<img src="{$img}" width="100em" style="transform:rotate(1.5700981950941);"/>
+
+<img src="{$img}" width="{$width}" height="{$height}" style="transform:rotate(1.5700981950941);"/>
 </xsl:template>
 
 
