@@ -56,6 +56,7 @@
 	<xsl:apply-templates select="draw:image"/>
 
 <xsl:apply-templates select="*/text:p"/>
+<xsl:apply-templates select="*/text:list"/>
 </div>
 </xsl:template>
 
@@ -63,6 +64,19 @@
 <p>
 <xsl:value-of select="."/>
 </p>
+</xsl:template>
+
+<xsl:template match="text:list">
+<ul>
+<xsl:apply-templates select="text:list-item"/>
+</ul>
+</xsl:template>
+
+
+<xsl:template match="text:list-item">
+<li>
+<xsl:apply-templates select="*/text:span"/>
+</li>
 </xsl:template>
 
 <xsl:template match="draw:image">
