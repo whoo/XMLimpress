@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <xsl:stylesheet version="1.0"
-	xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-  xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"
-	xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
-	xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
-	xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0"
-	xmlns:xlink="http://www.w3.org/1999/xlink"
-	 exclude-result-prefixes="text">
+		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+	  xmlns:draw="urn:oasis:names:tc:opendocument:xmlns:drawing:1.0"
+		xmlns:office="urn:oasis:names:tc:opendocument:xmlns:office:1.0"
+		xmlns:text="urn:oasis:names:tc:opendocument:xmlns:text:1.0"
+		xmlns:presentation="urn:oasis:names:tc:opendocument:xmlns:presentation:1.0"
+		xmlns:xlink="http://www.w3.org/1999/xlink"
+		 exclude-result-prefixes="text">
 
 <xsl:output method="xml" encoding="UTF-8" indent="yes"/>
 
@@ -75,7 +75,8 @@
 
 <xsl:template match="text:list-item">
 <li>
-<xsl:apply-templates select="*/text:span"/>
+
+<xsl:apply-templates select="text:p"/>
 </li>
 </xsl:template>
 
