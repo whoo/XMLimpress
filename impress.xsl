@@ -27,6 +27,8 @@
 			color: gray;
 		}
 	</style>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+
 	<title><xsl:value-of select="/impress/title"/></title>
 	</head>
 	<body onload="impress().init();">
@@ -37,7 +39,7 @@
 		<div id="impress"> 
 			<xsl:apply-templates select="step"/>
 
-<div id="overview" class="step present active" data-x="0" data-y="0" data-scale="10" style="position: absolute; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(10); transform-style: preserve-3d;"> </div>
+<div id="overview" class="step present active" data-x="0" data-y="0" data-scale="10" style="position: absolute; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(10); transform-style: preserve-3d;" data-z="-1000" > </div>
 		</div>
 	</body>
 	</html>
@@ -56,7 +58,7 @@
 	<xsl:variable name="rid" ><xsl:value-of select="./@id" /></xsl:variable>
 
 	<div class="step slide {$rid}" data-x="{$data-x}" data-y="{$data-y}" data-rotate="{$data-rotate}"> 
-		<xsl:copy-of select="."/>
+		<xsl:copy-of select="./*"/>
 	</div>
 </xsl:template>
 
