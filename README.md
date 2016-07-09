@@ -21,7 +21,6 @@ the `output method` to `xml` in the fifth line of `impress.xsl`.
 To avoid malfunctions is better to save the xml or html file, `impress.xsl` and `impress.js`
 in the same directory.
 
-OdpContent.xml can convert impress(libreoffice) to xml compatible document.
 
 
 Structure of XML file
@@ -72,3 +71,7 @@ Where:
 </impress>
 
 ```
+Add on
+------
+
+OdpContent.xml can convert impress(libreoffice) to xml compatible document.
