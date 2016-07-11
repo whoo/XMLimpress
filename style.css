@@ -1,0 +1,21 @@
+.slide {
+	background: url('http://www.redlineasesores.com/wp-content/uploads/2015/10/6.png') no-repeat;
+	color: white;
+	background-color: white;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+body { background-color: gray;  font-family: Arial, Helvetica;}
+
+.step {
+width:800px;
+height:600px;
+
+}
+
+
+.slide DIV:first-child {
+font-size: 4em;
+
+}
