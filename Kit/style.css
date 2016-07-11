@@ -1,9 +1,10 @@
 .slide {
-	background: url('http://www.redlineasesores.com/wp-content/uploads/2015/10/6.png') no-repeat;
+	background: url('http://www.robcrandell.com/sanctuary/Backgrounds/Clouds_Worship_Slide.jpg') no-repeat;
 	color: white;
 	background-color: white;
 	border-radius: 20px;
 	padding: 10px;
+	background-size: 820px 620px;
 }
 
 body { background-color: gray;  font-family: Arial, Helvetica;}
@@ -18,4 +19,17 @@ height:600px;
 .slide DIV:first-child {
 font-size: 3em;
 
+}
+
+#step-2,#step-5 {
+	color: green;
+	background: url("http://kxoj.com/wp-content/uploads/Old-Paper-Worship-Background-Slide.png") no-repeat;
+
+	background-size: 820px 620px;
+}
+
+#step-4 {
+
+background: url("http://www.hurstcreative.com/downloads/powerpoint-slides/slides/14.jpg") no-repeat;
+	background-size: 820px 620px;
 }
