@@ -4,6 +4,13 @@ XMLimpress.js
 Generates [impress.js](https://github.com/impress/impress.js/wiki)
 presentations with predesigned transitions from an XML file
 
+Addon
+-----
+OdpToXml.py (to convert ooimpress to xml compatible file)
+Use style.css to customize your presentation
+Sorry only htmltags are used (not stylesheet)
+
+
 Usage
 -----
 
