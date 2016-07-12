@@ -51,6 +51,8 @@ def recurse(item,el):
         endnode.tail=a.tail
         el.append(endnode)
 
+
+### main
 r = xml.xpath('//draw:page', namespaces=namespaces)
 
 for page in r:
@@ -80,14 +82,14 @@ for page in r:
 
 #        print(x)
 #        print(y)
-        print(w)
-        print(h)
+#        print(w)
+#        print(h)
 #        print(t)
 
 
         for test in frame.xpath(".//draw:image",namespaces=namespaces):
-            if (t):
-                print("Transform: %s"%t)
+#            if (t):
+#                print("Transform: %s"%t)
 
             #print(test.tag[len(namespaces['draw'])+2:])
             #print(test.get("{http://www.w3.org/1999/xlink}href"))
