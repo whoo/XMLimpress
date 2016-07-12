@@ -73,13 +73,7 @@ Where:
 <!--xhtml code for the third slide-->
 </step>
 
-...
 
 </impress>
 
 ```
-
-Add on
-------
-
-OdpContent.xml can convert impress(libreoffice) to xml compatible document.
