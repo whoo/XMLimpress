@@ -25,10 +25,6 @@ def unzip(zfile):
         if (re.match("Pictures.*",a)):
             zip.extract(a,path="output")
 
-
-
-
-
 if (len(sys.argv)>1):
     unzip(sys.argv[1])
     os.chdir("output")
@@ -47,13 +43,9 @@ inc.attrib['angle']="45"
 inc.attrib['length']="4"
 outxml.append(inc)
 
-#head=etree.Element("head")
-#foutxml.append(head)
+
 outxml.append(etree.Element("title"))
 outxml.append(etree.Element("style"))
-#outxml = etree.Element("body")
-
-
 
 namespaces={
 "office":"urn:oasis:names:tc:opendocument:xmlns:office:1.0",
@@ -155,13 +147,6 @@ for page in r:
 
     outxml.append(step)
 
-
-
-#FILE = open("res.xml","w")
-#foutxml.append(outxml)
-#FILE.writelines(etree.tostring(outxml,pretty_print=True, encoding='utf-8').decode('utf-8'))
-#FILE.close()
-
 #### LOAD XSLT
 xslt_root = etree.parse("../Kit/impress.xsl")
 transform = etree.XSLT(xslt_root)
@@ -170,5 +155,3 @@ result=transform(outxml)
 FILE=open("index.html","w")
 FILE.writelines(etree.tostring(result,pretty_print=True, encoding='utf-8').decode('utf-8'))
 FILE.close()
-
-#print(etree.tostring(outxml, pretty_print=True, encoding='utf-8').decode('utf-8'))
