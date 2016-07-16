@@ -1,21 +1,55 @@
 #!/usr/bin/env python3
 
 from lxml import etree
-import zipfile
+from zipfile import ZipFile
+import os
 import re
+import sys
+import shutil
+
+
+def unzip(zfile):
+    print(zfile)
+    zip=ZipFile(zfile)
+
+    try:
+        os.mkdir("output")
+        shutil.copy("Kit/impress.js","output")
+        shutil.copy("Kit/style.css","output")
+    except:
+        print("Error mkdir output")
+
+    for a in zip.namelist():
+        if (re.match("content.xml",a)):
+            zip.extract(a,path="output")
+        if (re.match("Pictures.*",a)):
+            zip.extract(a,path="output")
+
+    os.chdir("output")
+
+
+
+if (sys.argv[1]):
+    unzip(sys.argv[1])
 
 
 xml = etree.parse("content.xml")
 
-outxml = etree.Element("impress")
+outxml=etree.Element("impress")
+
 inc= etree.Element("increment")
 inc.attrib['x']="1000"
 inc.attrib['y']="1000"
 inc.attrib['angle']="45"
 inc.attrib['length']="4"
 outxml.append(inc)
+
+#head=etree.Element("head")
+#foutxml.append(head)
 outxml.append(etree.Element("title"))
 outxml.append(etree.Element("style"))
+#outxml = etree.Element("body")
+
 
 
 namespaces={
@@ -58,6 +92,10 @@ r = xml.xpath('//draw:page', namespaces=namespaces)
 for page in r:
     Npage=page.get("{urn:oasis:names:tc:opendocument:xmlns:drawing:1.0}name")
     step = etree.Element("step",id=Npage)
+    #step.set("class","step slide")
+    #step.set("data-x",XX)
+    #step.set("data-y",YY)
+    #step.set("data-rotate",RR)
 
     for frame in page.xpath("draw:frame", namespaces=namespaces):
         div=etree.Element("div")
@@ -80,29 +118,11 @@ for page in r:
             #print(shortns(test.tag,"text"))
             recurse(test,div)
 
-#        print(x)
-#        print(y)
-#        print(w)
-#        print(h)
-#        print(t)
-
-
         for test in frame.xpath(".//draw:image",namespaces=namespaces):
-#            if (t):
-#                print("Transform: %s"%t)
-
-            #print(test.tag[len(namespaces['draw'])+2:])
-            #print(test.get("{http://www.w3.org/1999/xlink}href"))
-
-            #m=re.match(r"rotate \((?P<rotation>[\-0-9\.]*)\).*",t)
-            #rotation=m.group('rotation')
-            #m=re.match(r".*translate \((?P<x>[0-9\.]*)cm (?P<y>[0-9\.]*)cm\).*",t)
 
             w=float(re.findall('\d+\.?\d?',w)[0])
             h=float(re.findall('\d+\.?\d?',h)[0])
-            #x=(float(m.group('x'))-float(re.findall('\d+\.?\d?',h)[0]))*100/28
-            #y=float(m.group('y'))*100/21
-            #rotation=abs(float(rotation))
+
 
 
             img=etree.Element("img")
@@ -133,8 +153,19 @@ for page in r:
     outxml.append(step)
 
 
-FILE = open("res.xml","w")
-FILE.writelines(etree.tostring(outxml,pretty_print=True, encoding='utf-8').decode('utf-8'))
+
+#FILE = open("res.xml","w")
+#foutxml.append(outxml)
+#FILE.writelines(etree.tostring(outxml,pretty_print=True, encoding='utf-8').decode('utf-8'))
+#FILE.close()
+
+#### LOAD XSLT
+xslt_root = etree.parse("../Kit/impress.xsl")
+transform = etree.XSLT(xslt_root)
+result=transform(outxml)
+
+FILE=open("index.html","w")
+FILE.writelines(etree.tostring(result,pretty_print=True, encoding='utf-8').decode('utf-8'))
 FILE.close()
 
 #print(etree.tostring(outxml, pretty_print=True, encoding='utf-8').decode('utf-8'))

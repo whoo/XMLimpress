@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-unzip -d html test.odp content.xml Pictures/*
+unzip -d html "$1" content.xml Pictures/*
 cd html
 cp ../../Kit/* .
 ../../OdpToXml.py
