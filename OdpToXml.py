@@ -25,16 +25,19 @@ def unzip(zfile):
         if (re.match("Pictures.*",a)):
             zip.extract(a,path="output")
 
-    os.chdir("output")
 
 
 
-if (sys.argv[1]):
+
+if (len(sys.argv)>1):
     unzip(sys.argv[1])
+    os.chdir("output")
+else:
+    print( "Need Args")
+    exit(0)
 
 
 xml = etree.parse("content.xml")
-
 outxml=etree.Element("impress")
 
 inc= etree.Element("increment")
