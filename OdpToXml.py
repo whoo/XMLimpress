@@ -147,14 +147,17 @@ for page in r:
 
             if (t):
                 print("Transform")
-                m=re.match(r"rotate \((?P<rotation>[\-0-9\.]*)\).*",t)
-                rotation=abs(float(m.group('rotation')))
-                img.attrib['style']="transform: rotate(-%frad)"%rotation
-                m=re.match(r".*translate \((?P<x>[0-9\.]*)cm (?P<y>[0-9\.]*)cm\).*",t)
-                x=float(m.group('x'))-(w-h)/2
-                y=float(m.group('y'))-h
-                x=x*100/28
-                y=y*100/21
+                try:
+                    m=re.match(r"rotate \((?P<rotation>[\-0-9\.]*)\).*",t)
+                    rotation=abs(float(m.group('rotation')))
+                    img.attrib['style']="transform: rotate(-%frad)"%rotation
+                    m=re.match(r".*translate \((?P<x>[0-9\.]*)cm (?P<y>[0-9\.]*)cm\).*",t)
+                    x=float(m.group('x'))-(w-h)/2
+                    y=float(m.group('y'))-h
+                    x=x*100/28
+                    y=y*100/21
+                except:
+                    pass
 
             w=w*100/28
 

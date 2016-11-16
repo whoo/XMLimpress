@@ -7,7 +7,7 @@ border: 1px solid black;
 position:relative !important ; 
 top: 5% !important ;
 left: 5% !important;
-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) !important;
+transform: none !important;
 transform-style: preserve-3d;
 break-after: page !important;
 margin-bottom: 100px;
@@ -23,7 +23,7 @@ margin-bottom: 100px;
 
 
 #impress div:first-child {
-transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)  !important;
+transform: none  !important;
 }
 
 #impress {
@@ -46,4 +46,9 @@ overflow: auto !important;
 
 ul span {
 color: red;
+}
+
+img {
+ animation: none !important;
+
 }
