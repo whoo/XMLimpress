@@ -6,7 +6,12 @@ import os
 import re
 import sys
 import shutil
+from math import floor
 
+import Fancy
+
+
+style=""
 
 def unzip(zfile):
     print(zfile)
@@ -14,10 +19,13 @@ def unzip(zfile):
 
     try:
         os.mkdir("output")
-        shutil.copy("Kit/impress.js","output")
-        shutil.copy("Kit/style.css","output")
     except:
         print("Error mkdir output")
+
+    shutil.copy("Kit/impress.js","output")
+    shutil.copy("Kit/style.css","output")
+    shutil.copy("Kit/print.css","output")
+
 
     for a in zip.namelist():
         if (re.match("content.xml",a)):
@@ -51,7 +59,8 @@ namespaces={
 "office":"urn:oasis:names:tc:opendocument:xmlns:office:1.0",
 "draw":"urn:oasis:names:tc:opendocument:xmlns:drawing:1.0",
 "text":"urn:oasis:names:tc:opendocument:xmlns:text:1.0",
-"svg":"urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0"
+"svg":"urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0",
+"presentation":"urn:oasis:names:tc:opendocument:xmlns:presentation:1.0"
 }
 
 
@@ -92,8 +101,15 @@ for page in r:
     #step.set("data-y",YY)
     #step.set("data-rotate",RR)
 
+    bg=page.xpath("presentation:notes//text()",namespaces=namespaces)
+    #print(bg)
+    if (len(bg)>0):
+        style+='#step-%s {background: url("%s") no-repeat; background-size: 820px 620px}\n'%(Npage[4:],bg[0])
+
     for frame in page.xpath("draw:frame", namespaces=namespaces):
         div=etree.Element("div")
+        infostyle=frame.get("{urn:oasis:names:tc:opendocument:xmlns:drawing:1.0}text-style-name")
+
         x=frame.get("{urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0}x")
         y=frame.get("{urn:oasis:names:tc:opendocument:xmlns:svg-compatible:1.0}y")
         t=frame.get("{urn:oasis:names:tc:opendocument:xmlns:drawing:1.0}transform")
@@ -109,6 +125,10 @@ for page in r:
             #print("<div style='position: absolute;left:%d%%;top:%d%%'></div>"%(x,y))
             div.attrib['style']="position: absolute;left:%d%%;top:%d%%"%(x,y)
 
+        if (infostyle is not None):
+            div.attrib['class']="%s term"%infostyle
+        #    print(infostyle)
+
         for test in frame.xpath("draw:text-box",namespaces=namespaces):
             #print(shortns(test.tag,"text"))
             recurse(test,div)
@@ -117,7 +137,6 @@ for page in r:
 
             w=float(re.findall('\d+\.?\d?',w)[0])
             h=float(re.findall('\d+\.?\d?',h)[0])
-
 
 
             img=etree.Element("img")
@@ -148,6 +167,17 @@ for page in r:
     outxml.append(step)
 
 #### LOAD XSLT
+
+### XML generated
+FILE=open("output.xml","w")
+FILE.writelines(etree.tostring(outxml,pretty_print=True, encoding='utf-8').decode('utf-8'))
+FILE.close()
+#### Extra Style
+FILE=open("bgstyle.css","w")
+FILE.writelines(style)
+FILE.close()
+
+### Final page
 xslt_root = etree.parse("../Kit/impress.xsl")
 transform = etree.XSLT(xslt_root)
 result=transform(outxml)

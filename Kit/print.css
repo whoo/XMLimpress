@@ -1,0 +1,49 @@
+@page {size: landscape}
+
+
+.slide { 
+border: 1px solid black;
+
+position:relative !important ; 
+top: 5% !important ;
+left: 5% !important;
+transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1) !important;
+transform-style: preserve-3d;
+break-after: page !important;
+margin-bottom: 100px;
+
+-webkit-print-color-adjust: exact;
+
+   page-break-after: always;
+           page-break-inside: avoid;
+
+
+
+}
+
+
+#impress div:first-child {
+transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)  !important;
+}
+
+#impress {
+left:0% !important;
+top:0% !important;
+margin: 0px auto 0px auto; !important;
+width: 900px !important;
+height: 600px !important;
+
+transform: inherit !important;
+}
+
+#overview {
+display: none;
+}
+
+body  {
+overflow: auto !important;
+}
+
+ul span {
+color: red;
+}
