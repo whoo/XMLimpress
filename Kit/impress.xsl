@@ -10,6 +10,8 @@
 								<style>
 										<xsl:value-of select="/impress/style"/>		#header {			witdh:100%;			text-align:center;			color: gray;		}	</style>
 										<link rel="stylesheet" type="text/css" href="style.css"/>
+										<link rel="stylesheet" type="text/css" href="bgstyle.css"/>
+										<link rel="stylesheet" type="text/css" href="print.css" media="print" />
 										<title>
 												<xsl:value-of select="/impress/title"/>
 										</title>
@@ -21,7 +23,7 @@
 										</div>
 										<div id="impress">
 												<xsl:apply-templates select="step"/>
-												<div id="overview" class="step present active" data-x="0" data-y="0" data-scale="10" style="position: absolute; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(10); transform-style: preserve-3d;" data-z="-1000" >
+												<div id="overview" class="step present active" data-x="2000" data-y="0" data-scale="10" style="position: absolute; transform: translate(-50%, -50%) translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(10); transform-style: preserve-3d;" data-z="-100" >
 												</div>
 										</div>
 								</body>
@@ -40,9 +42,9 @@
 						<xsl:variable name="loop">
 								<xsl:value-of select="../increment/@length"/>
 						</xsl:variable>
-						<xsl:variable name="data-x" select="position() * $x-inc - floor(position() div $loop) * $loop * $x-inc" />
+						<xsl:variable name="data-x" select="position() * $x-inc -floor(position() div $loop) * $loop *$y-inc " />
 						<xsl:variable name="data-y" select="floor((position() - 1) div $loop) * $y-inc" />
-						<xsl:variable name="data-rotate" select="(position() - 1) * $rotate-inc - floor(position() div $loop) * $rotate-inc" />
+						<xsl:variable name="data-rotate" select="floor(position() div $loop *2  * $rotate-inc)" />
 						<xsl:variable name="rid" >
 								<xsl:value-of select="./@id" />
 						</xsl:variable>

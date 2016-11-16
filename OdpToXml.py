@@ -8,7 +8,7 @@ import sys
 import shutil
 from math import floor
 
-import Fancy
+#import Fancy
 
 
 style=""
