@@ -1,4 +1,3 @@
-@page {size: landscape}
 
 
 .slide { 
@@ -14,8 +13,8 @@ margin-bottom: 100px;
 
 -webkit-print-color-adjust: exact;
 
-   page-break-after: always;
-           page-break-inside: avoid;
+page-break-after: always;
+page-break-inside: avoid;
 
 
 
