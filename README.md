@@ -1,4 +1,12 @@
-# XMLimpress.js
+#OdpToXml
+============
+
+Create your presentation with Impress odp, and share it in html format.
+* print.css is available for pdf sharing
+* you can customize css to add background/effect
+
+
+# Original >> XMLimpress.js
 =============
 
 Generates [impress.js](https://github.com/impress/impress.js/wiki)
