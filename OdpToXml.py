@@ -8,9 +8,6 @@ import sys
 import shutil
 from math import floor
 
-#import Fancy
-
-
 style=""
 
 def unzip(zfile):

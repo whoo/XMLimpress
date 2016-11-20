@@ -1,4 +1,4 @@
-XMLimpress.js
+# XMLimpress.js
 =============
 
 Generates [impress.js](https://github.com/impress/impress.js/wiki)

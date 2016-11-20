@@ -1,3 +1,4 @@
+body { background-color: gray;  font-family: Arial, Helvetica;}
 .slide {
 	background: url('http://www.robcrandell.com/sanctuary/Backgrounds/Clouds_Worship_Slide.jpg') no-repeat;
 	color: white;
@@ -6,30 +7,20 @@
 	padding: 10px;
 	background-size: 820px 620px;
 }
-
-body { background-color: gray;  font-family: Arial, Helvetica;}
-
 .step {
 width:800px;
 height:600px;
 
 }
-
-
 .slide DIV:first-child {
 font-size: 3em;
-
 }
-
 #step-2,#step-5 {
 	color: green;
 	background: url("http://kxoj.com/wp-content/uploads/Old-Paper-Worship-Background-Slide.png") no-repeat;
-
 	background-size: 820px 620px;
 }
-
 #step-4 {
-
-background: url("http://www.hurstcreative.com/downloads/powerpoint-slides/slides/14.jpg") no-repeat;
+  background: url("http://www.hurstcreative.com/downloads/powerpoint-slides/slides/14.jpg") no-repeat;
 	background-size: 820px 620px;
 }

@@ -1,9 +1,8 @@
 
 
-.slide { 
+.slide {
 border: 1px solid black;
-
-position:relative !important ; 
+position:relative !important ;
 top: 5% !important ;
 left: 5% !important;
 transform: none !important;
@@ -12,18 +11,12 @@ break-after: page !important;
 margin-bottom: 100px;
 
 -webkit-print-color-adjust: exact;
-
 page-break-after: always;
 page-break-inside: avoid;
-
-
-
 }
 
 
-#impress div:first-child {
-transform: none  !important;
-}
+#impress div:first-child {transform: none  !important;}
 
 #impress {
 left:0% !important;
@@ -31,23 +24,9 @@ top:0% !important;
 margin: 0px auto 0px auto; !important;
 width: 900px !important;
 height: 600px !important;
-
 transform: inherit !important;
 }
-
-#overview {
-display: none;
-}
-
-body  {
-overflow: auto !important;
-}
-
-ul span {
-color: red;
-}
-
-img {
- animation: none !important;
-
-}
+#overview {display: none;}
+body  {overflow: auto !important;}
+ul span { color: red;}
+img { animation: none !important;}
